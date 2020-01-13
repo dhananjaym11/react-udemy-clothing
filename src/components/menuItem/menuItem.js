@@ -1,8 +1,9 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 
-export default function MenuItem(props) {
+function MenuItem(props) {
  	return (
-		<div className="menu-item">
+		<div className="menu-item" onClick={()=>props.history.push('/hats')}>
 			<div className="content">
 				<h1 className="title">{props.title}</h1>
 				<span className="subtitle">Shop Now</span>
@@ -10,3 +11,5 @@ export default function MenuItem(props) {
 		</div>
 	)
 }
+
+export default withRouter(MenuItem);
