@@ -1,0 +1,18 @@
+import React from 'react';
+
+function CollectionItem ({name, imageUrl, price}) {
+	return (
+		<div className="collection-item">
+			<div 
+				className="image"
+				style={{backgroundImage: `url(${imageUrl})`}} >
+			<div className="collection-footer">
+				<span className="title">{name}</span>
+				<span className="price">{price}</span>
+			</div>
+		</div>
+		</div>
+	)
+}
+
+export default CollectionItem;
