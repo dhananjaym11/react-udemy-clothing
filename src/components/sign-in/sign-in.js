@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import FormInput from '../form-input/form-input';
 import CustomButton from '../custom-button/custom-button';
+import * as actions from '../../redux/actions';
 
 class SignIn extends React.Component {
 	constructor(props) {
@@ -23,27 +25,48 @@ class SignIn extends React.Component {
 			email: '',
 			password: ''
 		})
+		this.props.setCurrentUser();
 	}
 
 	render() {
 		return (
 			<div>
-				<h2>SignIn</h2>
-				<form>
-					<div className="form-group">
-						<FormInput label="Email" type="text" onChange={this.handleChange} name="email" value={this.state.email} />
-					</div>
-					<div className="form-group">
-						<FormInput label="Password" type="password" onChange={this.handleChange} name="password" value={this.state.password} />
-					</div>
-					<div className="btn-container">
-						<CustomButton type="button" onClick={this.handleSubmit}>Sign In</CustomButton>
-					</div>
-
-				</form>
+				{ this.props.user ? 
+				<h1>Hello {this.props.user} </h1> : 
+				(
+					<>
+					<h2>SignIn</h2>
+					<form>
+						<div className="form-group">
+							<FormInput label="Email" type="text" onChange={this.handleChange} name="email" value={this.state.email} />
+						</div>
+						<div className="form-group">
+							<FormInput label="Password" type="password" onChange={this.handleChange} name="password" value={this.state.password} />
+						</div>
+						<div className="btn-container">
+							<CustomButton type="button" onClick={this.handleSubmit}>Sign In</CustomButton>
+						</div>
+					</form>
+					</>
+				)
+			}
 			</div>
 		)
 	}
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        setCurrentUser: () => {
+            dispatch(actions.setCurrentUser('Dj'))
+        }
+    }
+}
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        user: state.userReducer.currentUser
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
