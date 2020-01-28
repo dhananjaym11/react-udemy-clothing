@@ -31,25 +31,18 @@ class SignIn extends React.Component {
 	render() {
 		return (
 			<div>
-				{ this.props.user ? 
-				<h1>Hello {this.props.user} </h1> : 
-				(
-					<>
-					<h2>SignIn</h2>
-					<form>
-						<div className="form-group">
-							<FormInput label="Email" type="text" onChange={this.handleChange} name="email" value={this.state.email} />
-						</div>
-						<div className="form-group">
-							<FormInput label="Password" type="password" onChange={this.handleChange} name="password" value={this.state.password} />
-						</div>
-						<div className="btn-container">
-							<CustomButton type="button" onClick={this.handleSubmit}>Sign In</CustomButton>
-						</div>
-					</form>
-					</>
-				)
-			}
+				<h2>SignIn</h2>
+				<form>
+					<div className="form-group">
+						<FormInput label="Email" type="text" onChange={this.handleChange} name="email" value={this.state.email} />
+					</div>
+					<div className="form-group">
+						<FormInput label="Password" type="password" onChange={this.handleChange} name="password" value={this.state.password} />
+					</div>
+					<div className="btn-container">
+						<CustomButton type="button" onClick={this.handleSubmit}>Sign In</CustomButton>
+					</div>
+				</form>
 			</div>
 		)
 	}
@@ -63,10 +56,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        user: state.userReducer.currentUser
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);

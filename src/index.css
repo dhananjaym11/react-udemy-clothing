@@ -7,3 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 20px 60px;
 }
+.custom-button {
+    background: #333;
+    border: 0;
+    color: #fff;
+    padding: 5px 10px;
+}

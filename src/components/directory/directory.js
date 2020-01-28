@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import MenuItem from '../menuItem/menuItem';
 
@@ -29,6 +30,8 @@ class Directory extends React.Component {
 	render() {
 		return (
 			<div className="directory-menu">
+				{ this.props.currentUser ? 
+				<h1>Hello {this.props.currentUser} </h1> : null }
 				{this.state.sections.map(({id, ...otherProps}) => (
 					<MenuItem key={id} {...otherProps} />
 				))}
@@ -37,4 +40,10 @@ class Directory extends React.Component {
 	}
 }
 
-export default Directory;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        currentUser: state.userReducer.currentUser
+    }
+}
+
+export default connect(mapStateToProps)(Directory);
