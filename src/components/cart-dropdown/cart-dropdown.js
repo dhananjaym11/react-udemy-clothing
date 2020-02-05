@@ -9,7 +9,7 @@ function CartDropdown ({showCartdown, cartItems}) {
 				<ul>
 				{
 					cartItems.map((item, i) => (
-						<li key={i}>{item.name}</li>
+						<li key={i}>{item.name} {item.price} * {item.quality} = {item.price * item.quality}</li>
 					))
 				}
 				</ul>

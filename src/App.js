@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import HomePage from './containers/homePage/homePage';
 import ShopPage from './containers/shopPage/shopPage';
 import SignInAndSignUp from './containers/sign-in-and-sign-up/sign-in-and-sign-up';
-import Header from './components/header/header'
-import './App.css';
+import Header from './components/header/header';
 
 class App extends React.Component {
   render() {
